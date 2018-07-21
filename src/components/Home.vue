@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <h1>{{ msg }}</h1>
-    <button>Google アカウントでログイン </button>
+    <button @click="googleLogin">Google アカウントでログイン </button>
   </div>
 </template>
 <script>
@@ -11,6 +11,11 @@ export default {
     return {
       msg: "Welcome to MatzMarkdown"
     };
+  },
+  methods: {
+    googleLogin: function () {
+      firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    }
   }
 };
 </script>
