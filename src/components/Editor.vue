@@ -9,6 +9,7 @@
         <p class="memoTitle">{{ displayTitle(memo.markdown) }}</p>
       </div>
       <button class="addMemoBtn" @click="addMemo">メモの追加</button>
+      <button class="deleteMemoBtn" v-if="memos.length > 1" @click="deleteMemo">選択中のメモの削除</button>
     </div>
   <textarea class="markdown" v-model="memos[selectedIndex].markdown"></textarea>
   <div class="preview" v-html="preview()"></div>
@@ -29,6 +30,7 @@ export default {
           markdown: ""
         }
       ],
+      rubbishBin: [],
       selectedIndex: 0
     };
   },
@@ -49,6 +51,12 @@ export default {
     },
     displayTitle: function (text) {
       return text.split(/\n/)[0];
+    },
+    deleteMemo: function () {
+      this.rubbishBin.push(this.memos.splice(this.selectedIndex, 1));
+      if (this.selectedIndex > 0) {
+        this.selectedIndex--;
+      }
     }
   }
 };
