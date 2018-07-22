@@ -1,6 +1,6 @@
 # matzmarkdown
 
-> A Vue.js project
+> 『Vue.jsとFirebaseで作るミニWebサービス(同人版)』を写経したもの
 
 ## Build Setup
 
